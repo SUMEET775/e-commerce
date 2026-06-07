@@ -1,7 +1,7 @@
-import { createContext, useState } from "react";
+import { createContext, useState ,useContext} from "react";
 import { set } from "react-hook-form";
 
-export const AuthContext = createContext();
+ const AuthContext = createContext();
 
 export default function AuthProvider({ children }) {
   const [user, setuser] = useState(
@@ -51,4 +51,10 @@ export default function AuthProvider({ children }) {
       {children}
     </AuthContext.Provider>
   );
+}
+
+
+export function useAuth(){
+  const context = useContext(AuthContext);
+  return context;
 }
